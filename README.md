@@ -7,6 +7,7 @@ This is a React Boilerplate with:
 - babel-prettier
 - global-styles (styled-components)
 - Default font: Roboto (from google fonts)
+- Icons (Material Design)
 ```
 
 overwrite config to Airbnb style guide
@@ -117,4 +118,31 @@ create styles/global.js
 set default styles
 
 import then in App.js
+```
+
+
+### Icons ( Material design )
+```
+yarn add react-icons
+
+```
+#### Usage icons
+```
+import {<name>} from 'react-icons/md';
+```
+
+
+### Polished ( Javascript manipulate color )
+```
+yarn add polished;
+
+```
+
+#### Usage Polished
+```
+import {darken} from 'polished';
+
+# in style.js ( using style-component)
+background: ${darken(0.02, '#333')};
+
 ```
