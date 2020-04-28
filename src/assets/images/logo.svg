@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="100px" viewBox="0 0 200 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 10</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-10" fill-rule="nonzero" fill="#4384FF">
+            <rect id="Rectangle-path" transform="translate(104.517619, 50.734297) rotate(-70.018000) translate(-104.517619, -50.734297) " x="57.6986189" y="42.7342966" width="93.638" height="16"></rect>
+            <path d="M61.119443,12.292 L50.877443,0 L2.87744299,40 C1.15149445,41.4388104 0.110213804,43.5371443 0.00825116646,45.7818442 C-0.0937114712,48.026544 0.753045257,50.2106396 2.34144299,51.8 L50.341443,99.8 L61.655443,88.486 L19.850443,46.681 L61.119443,12.292 Z" id="Shape"></path>
+            <path d="M196.778,40 L148.778,0 L138.536,12.292 L179.805,46.684 L138,88.489 L149.314,99.803 L197.314,51.803 C198.902398,50.2136396 199.749154,48.029544 199.647192,45.7848442 C199.545229,43.5401443 198.503949,41.4418104 196.778,40.003 L196.778,40 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>
