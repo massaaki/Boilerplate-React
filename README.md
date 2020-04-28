@@ -162,6 +162,36 @@ yarn add axios
 ### util general format
 ```
 create src/util/format.js
+
+```
+#### usage format
+```
+import { formatPrice } from '../../util/format';
+
+formatPrice(<VALUE)
+```
+#### good practices to use format
+```
+# if you're using in api request, you shold use something like this:
+
+async componentDidMount() {
+
+  ...
+
+  const response = await api.get('/items');
+  const data = response.data.map(item => ({
+    ...product,
+    priceFormated: formatPrice(item.price)
+  }));
+
+  this.setState({
+    items: item
+  });
+
+  ...
+
+}
+
 ```
 
 
