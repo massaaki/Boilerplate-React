@@ -8,6 +8,7 @@ This is a React Boilerplate with:
 - global-styles (styled-components)
 - Default font: Roboto (from google fonts)
 - Icons (Material Design)
+- redux
 ```
 
 overwrite config to Airbnb style guide
