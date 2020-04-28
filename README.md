@@ -146,3 +146,22 @@ import {darken} from 'polished';
 background: ${darken(0.02, '#333')};
 
 ```
+
+
+### API
+```
+# Install axios
+yarn add axios
+
+# create folder src/services/api.js
+
+```
+
+
+
+### util general format
+```
+create src/util/format.js
+```
+
+
