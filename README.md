@@ -5,6 +5,7 @@ This is a React Boilerplate with:
 - .editorconfig
 - prettier
 - babel-prettier
+- global-styles (styled-components)
 ```
 
 overwrite config to Airbnb style guide
@@ -101,4 +102,18 @@ module.exports = {
 ### Routes
 ```routes
 yarn add react-router-dom
+
+Create routes in src
+
+import this element in App.js
+```
+
+### Styled-component
+```styled
+yarn add styled-components
+
+create styles/global.js
+set default styles
+
+import then in App.js
 ```

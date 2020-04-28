@@ -7,7 +7,6 @@ import { Switch, Route } from 'react-router-dom';
  */
 import Home from './pages/Home';
 import Cart from './pages/Cart';
-
 //* </> End Pages
 
 export default function Routes() {
