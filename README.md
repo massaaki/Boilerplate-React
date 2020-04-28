@@ -264,6 +264,28 @@ function App() {
 
 }
 ```
+### How to use redux in component
+#### 1. go to Component PATH/index.js and add connect from redux
+```
+# conect the component with redux state
+import { connect } from 'react-redux'
+```
+#### 2. remove export default from function and add separate with connect()
+```
+# from:
+export default class ClassName extends Component {
+  ...
+}
+
+# to:
+class className extends Component {
+  ...
+}
+
+export default connect()(className);
+
+```
+
 
 
 
