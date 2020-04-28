@@ -195,3 +195,74 @@ async componentDidMount() {
 ```
 
 
+
+## REDUX
+
+### Install Redux and React Redux integration
+```
+yarn add redux react-redux
+```
+
+### Folders
+
+#### 1. create reducer folders
+```
+src/store/modules/rootReducer.js
+src/store/modules/<reducerName>/reducer.js
+```
+```
+# reducer.js
+function <reducerName> {
+  return [];
+}
+
+export default <reducerName>;
+```
+
+```
+# rootReducer
+import { combineReducers } from 'redux';
+
+import <reducerName> from './<reducerName>/reducer;
+
+export default combineReducers({
+  <reducerName>,
+});
+
+```
+
+
+#### 2. create folder src/store/index.js
+```
+# index.js
+import { createStore } from 'redux';
+import rootReducer from './modules/rootReducer';
+
+
+const store = createStore(rootReducer);
+
+export default store;
+```
+
+#### 3. import in App.js
+```
+import { Provider } from 'react-redux';
+import store from './store';
+```
+
+#### 4. add this code in function App()
+```
+# src/App.js
+
+function App() {
+  return(
+    <Provider store={store}>
+      ...
+    <Provider>
+  );
+
+}
+```
+
+
+
