@@ -5,11 +5,6 @@ This is a React Boilerplate with:
 - .editorconfig
 - prettier
 - babel-prettier
-- global-styles (styled-components)
-- Default font: Roboto (from google fonts)
-- Icons (Material Design)
-- redux
-- reactotron
 ```
 
 overwrite config to Airbnb style guide
@@ -18,6 +13,35 @@ overwrite config to Airbnb style guide
 - eslintr.js
 ```
 
+# LIBRARIES
+```
+- global-styles (styled-components)
+- Default font: Roboto (from google fonts)
+- Icons (Material Design)
+- redux
+- reactotron
+- immer
+```
+
+# START PROJECT
+```
+`1. Clone repository`
+git clone https://github.com/massaaki/react-boilerplate.git <projectName>
+
+`2. navigate to path`
+cd PATH/<projectName>
+
+`3. Install dependences`
+yarn
+
+`4. run project`
+yarn start
+```
+
+# STATE Logs on development mode
+```
+Just Install `reactotron`
+```
 
 
 ## Steps to generate same boilerplate from zero
@@ -340,6 +364,9 @@ class className extends Component {
   ...
 }
 
+//or use snippet mapStateToProps
+//set the parammeters and add to connect
+
 export default connect(state=> ({
   itens: state.itens,
 }))(className);
@@ -406,4 +433,36 @@ export default store;
 #### 1. Just Install reactotron
 ```
 https://github.com/infinitered/reactotron/releases
+```
+
+
+## IMMER (Support to modify imutable states)
+### instalation
+suport to modify imutable states
+```
+yarn add immer
+```
+
+### import to reducer.js
+```
+import producer from 'immer';
+```
+
+### modify return in reduce.js
+```
+import producer from 'immer';
+
+export default function cart(state = [], action) {
+  switch(action.type) {
+    case 'STATE_NAME':
+      return produce(state, draft => {
+        // changes here
+        // examples
+        draft.push(action.item);
+      });
+    default:
+      return state;
+  }
+}
+
 ```
