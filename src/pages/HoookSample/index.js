@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
 function HookSample() {
   /**
@@ -63,6 +63,14 @@ function HookSample() {
     //   console.log('componentDidUnmount');
     // }
   }, [techs]);
+  //End - Events
+
+  /**
+   * Vars
+   */
+  const techSize = useMemo(() => techs.length, [techs]); //techs only update if state [techs] changes
+
+  //End - Vars
 
 
 
@@ -72,6 +80,8 @@ function HookSample() {
       <ul>
         {techs.map(tech => <li key={tech}>{tech}</li> )}
       </ul>
+      <strong> Techs registred: {techSize} </strong>
+      <br/>
       <input type="text" value={newTech} onChange={ e => setNewTech( e.target.value ) } />
       <button type="button" onClick={handleAdd}>Add</button>
     </>
