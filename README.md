@@ -475,9 +475,9 @@ export default function cart(state = [], action) {
 yarn add redux-saga
 ```
 
-### create saga.js in module folder (PATH_TO_STORE/modules/MODULE_NAME/saga.js)
+### create saga.js in module folder (PATH_TO_STORE/modules/MODULE_NAME/sagas.js)
 ```
-# saga.js
+# sagas.js
 
 import { call, put, all, takeLatest } from 'redux-saga/effects'; //for async methods and returns promises and put call redux action
 import api from 'PATH/services/api';
