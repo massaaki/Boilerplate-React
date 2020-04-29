@@ -521,6 +521,25 @@ export function addItemSuccess(product) {
 
 ```
 
+### replace PATH_TO_MODULES/module/reducer.js
+```
+export default function item(state = [], action) {
+  switch(action.type) {
+
+    ...
+
+    //case '@Item/ADD':
+    //  return ...
+
+    case 'Item/ADD_SUCCESS':
+      return ...
+    ...
+
+  }
+}
+```
+
+
 
 ### replace addItem to addItemRequest in page component PATH/pages/PAGE_COMPOENT/COMPONENT/index.js
 ```
@@ -565,14 +584,14 @@ export default function* rootSaga(){
 ```
 
 import { createStore, applyMiddleware, compose } from 'redux';
-import createsagaMiddleware from 'redux-saga';
+import createSagaMiddleware from 'redux-saga';
 
 
 import rootReducer from './modules/rootReducer';
 import rootSaga from './modules/rootSaga';
 
 
-const sagaMiddleware = createsagaMiddleware();
+const sagaMiddleware = createSagaMiddleware();
 
 const enhancer = process.env.NODE_ENV === 'development'
   ? compose(console.tron.createEnhancer(), applyMiddleware(sagaMiddleware))  : applyMiddleware(sagaMiddleware);
