@@ -9,6 +9,7 @@ This is a React Boilerplate with:
 - Default font: Roboto (from google fonts)
 - Icons (Material Design)
 - redux
+- reactotron
 ```
 
 overwrite config to Airbnb style guide
