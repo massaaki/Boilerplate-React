@@ -359,3 +359,50 @@ function className({item}) {
 }
 
 ```
+
+## Reactotron
+### installation
+```
+yarn add reactotron-react-js reactotron-redux
+```
+### folders
+#### create file: src/config/ReactotronConfig.js
+```
+# ReactotronConfig.js
+import Reactoltron from 'reactotron-react-js';
+import { reactotronRedux } from 'reactotron-redux';
+
+if( process.env.NODE_ENV === 'development' ) {
+  const tron = Reactoltron.configure()
+  .use(reactotronRedux())
+  .connect();
+
+  tron.clear();
+  console.tron = tron;
+}
+```
+
+### import config to src/App.js
+```
+import './config/ReactotronConfig';
+```
+
+### declare enchancer and send as parameter in createStore
+```
+# src/store/index.js
+import { createStore } from 'redux';
+
+import rootReducer from './modules/rootReducer';
+
+
+const enhancer = process.env.NODE_ENV === 'development'
+  ? console.tron.createEnhancer() : null;
+  const store = createStore(rootReducer, enhancer);
+export default store;
+```
+
+### USAGE
+#### 1. Just Install reactotron
+```
+https://github.com/infinitered/reactotron/releases
+```
