@@ -13,7 +13,7 @@ overwrite config to Airbnb style guide
 - eslintr.js
 ```
 
-# LIBRARIES
+# Libraries
 ```
 - global-styles (styled-components)
 - Default font: Roboto (from google fonts)
@@ -23,22 +23,22 @@ overwrite config to Airbnb style guide
 - immer
 ```
 
-# START PROJECT
+# Start project
 ```
-`1. Clone repository`
+# 1. Clone repository
 git clone https://github.com/massaaki/react-boilerplate.git <projectName>
 
-`2. navigate to path`
+# 2. navigate to path
 cd PATH/<projectName>
 
-`3. Install dependences`
+# 3. Install dependences
 yarn
 
-`4. run project`
+# 4. run project
 yarn start
 ```
 
-# STATE Logs on development mode
+# State logs on development mode
 ```
 Just Install `reactotron`
 ```
