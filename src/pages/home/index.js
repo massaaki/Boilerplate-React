@@ -1,47 +1,44 @@
-import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 // import { Container } from './styles';
 
 import * as SampleActions from '../../store/modules/reducerSample/actions';
 
 
-class Home extends Component {
-  state = {
-    item: []
-  };
+export default function Home() {
+  const [item, setItem] = useState([])
 
+  const dispatch = useDispatch();
 
-  componentDidMount() {
-    //api request here
+  useEffect( () => {
     const response = ['sample'];
+    setItem(response);
+  }, []);
 
+  // componentDidMount() {
+  //   const response = ['sample'];
+  //   this.setState({
+  //     item: response,
+  //   });
 
-    // update itens here
-    this.setState({
-      item: response,
-    });
+  // }
 
+  function handleAddItem() {
+   // const { addItemSample } = this.props; // SampleActions.addItemSample(item)
+   dispatch(SampleActions.addItemSample(item));
   }
 
-  handleAddItem(item) {
-    const { addItemSample } = this.props; // SampleActions.addItemSample(item)
-    addItemSample(item);
-  }
 
-  render() {
-    return (
-      <>
-        <h1>Hello</h1>
-        <button type="button" onClick={ () => this.handleAddItem('hello') }> Set Item</button>
-      </>
-    )
 
-  }
+
+  return (
+    <>
+      <h1>Hello</h1>
+      <button type="button" onClick={ () => handleAddItem() }> Set Item</button>
+    </>
+  )
+
+
 }
 
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(SampleActions, dispatch);
-
-export default connect(null, mapDispatchToProps)(Home);
