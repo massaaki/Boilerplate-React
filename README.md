@@ -18,9 +18,9 @@ overwrite config to Airbnb style guide
 - global-styles (styled-components)
 - Default font: Roboto (from google fonts)
 - Icons (Material Design)
-- redux
+- redux (https://redux.js.org/)
 - reactotron
-- immer
+- immer (https://immerjs.github.io/immer/docs/)
 ```
 
 # Start project
@@ -465,5 +465,123 @@ export default function cart(state = [], action) {
       return state;
   }
 }
+
+```
+
+## Redux Saga - Middleware (intercept action)
+### Install redux-saga
+```
+yarn add redux-saga
+```
+
+### create saga.js in module folder (PATH_TO_STORE/modules/MODULE_NAME/saga.js)
+```
+# saga.js
+
+import { call, put, all, takeLatest } from 'redux-saga/effects'; //for async methods and returns promises and put call redux action
+import api from 'PATH/services/api';
+
+import { addToCartSuccess } from './actions';
+
+
+function* addItem({id}) {
+  const response = yield call(api.get, `/API_REQUEST/${id}`);
+
+  yield put(addItemSuccess(response.data));
+
+}
+
+export default all([
+  takeLatest('@Item/ADD_REQUEST', addItem),
+]);
+
+```
+
+### rename type action and a new one to control request and sucess request
+```
+
+...
+
+export function addItemRequest(id) {
+  return {
+    type: '@Item/ADD_REQUEST',
+    id
+  };
+}
+
+export function addItemSuccess(product) {
+  return {
+    type: '@Item/ADD_REQUEST_SUCCESS',
+    product
+  };
+}
+
+...
+
+```
+
+
+### replace addItem to addItemRequest in page component PATH/pages/PAGE_COMPOENT/COMPONENT/index.js
+```
+
+
+imports ...
+
+class Item extends Component {
+  state: ...
+  async componentDidMount() {
+    ...
+  }
+
+  handleAddItem = id => {
+      // const { addItem } = this.props;
+      const { addItemRequest } = this.props;
+
+      //addItem(product);
+      addToItemReqeust(id);
+  }
+
+
+  ...
+}
+
+```
+
+### create a rootSaga.js in PATH_TO_STORE/modules/rootSaga.js
+```
+import { all } from 'redux-saga/effects;
+
+import item from './itens/sagas';
+
+export default function* rootSaga(){
+  return yield all([
+    item,
+  ])
+}
+```
+
+### add rootSaga in store/index.js
+```
+
+import { createStore, applyMiddleware, compose } from 'redux';
+import createsagaMiddleware from 'redux-saga';
+
+
+import rootReducer from './modules/rootReducer';
+import rootSaga from './modules/rootSaga';
+
+
+const sagaMiddleware = createsagaMiddleware();
+
+const enhancer = process.env.NODE_ENV === 'development'
+  ? compose(console.tron.createEnhancer(), applyMiddleware(sagaMiddleware))  : applyMiddleware(sagaMiddleware);
+  const store = createStore(rootReducer, enhancer);
+
+
+
+sagaMiddleware.run(rootSaga);
+
+export default store;
+
 
 ```
