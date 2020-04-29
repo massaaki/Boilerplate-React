@@ -24,6 +24,12 @@ overwrite config to Airbnb style guide
 - redux-saga
 ```
 
+# Samples pages
+```
+- Redux ('/')
+- React Hooks ('/hook-sample')
+```
+
 # Start project
 ```
 # 1. Clone repository
@@ -759,3 +765,37 @@ import history from '../../../services/history';
 history.push('/some-route-here');
 
 ```
+
+## React Hooks
+
+### React Hooks Sintax
+#### Installation
+```
+yarn add eslint-plugin-react-hooks -D
+```
+
+#### Configuration
+```
+# .eslintrc.js
+
+...
+
+  plugins: [
+
+    ...
+
+    'react-hooks'
+  ],
+
+...
+
+rules : {
+
+  ...
+
+  'react-hooks/rules-of-hooks': 'error',
+  'react-hooks/exhaustive-deps': 'warn'
+}
+
+```
+
