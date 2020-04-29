@@ -1,5 +1,6 @@
-import { call, put, all, takeLatest } from 'redux-saga/effects';
-import api from '../../../services/api';
+import {  all } from 'redux-saga/effects'; //just to remove warnings
+// import { call, put, all, takeLatest } from 'redux-saga/effects';
+// import api from '../../../services/api';
 
 // import { addItemSuccess } from './actions';
 

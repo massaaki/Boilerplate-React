@@ -605,3 +605,64 @@ export default store;
 
 
 ```
+
+
+## Adding redux-saga flow to reactotron
+
+### Instalation
+```
+yarn add reactotron-redux-saga
+```
+
+### import in src/config/ReactotronConfig.js
+```
+import Reactoltron from 'reactotron-react-js';
+import { reactotronRedux } from 'reactotron-redux';
+import reactotronSaga from 'reactotron-redux-saga'; //added
+
+
+if( process.env.NODE_ENV === 'development' ) {
+  const tron = Reactoltron.configure()
+  .use(reactotronRedux())
+  .use(reactotronSaga()) //added
+  .connect();
+
+  tron.clear();
+  console.tron = tron;
+}
+
+```
+
+### import in src/store/index.js
+```
+import { createStore, applyMiddleware, compose } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+
+
+import rootReducer from './modules/rootReducer';
+import rootSaga from './modules/rootSaga';
+
+
+//added
+const sagaMonitor = process.env.NODE_ENV === 'development'
+  ? console.tron.createSagaMonitor()
+  : null ;
+
+
+//added parameter
+const sagaMiddleware = createSagaMiddleware({
+  sagaMonitor
+});
+
+const enhancer = process.env.NODE_ENV === 'development'
+  ? compose(console.tron.createEnhancer(), applyMiddleware(sagaMiddleware))  : applyMiddleware(sagaMiddleware);
+  const store = createStore(rootReducer, enhancer);
+
+
+
+sagaMiddleware.run(rootSaga);
+
+export default store;
+
+
+```

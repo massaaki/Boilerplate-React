@@ -1,6 +1,5 @@
 import produce from 'immer';
 export default function reducerSample(state = [], action) {
-  console.log(state);
   switch(action.type) {
     case '@reducerSample/ADD':
       // console.log(state);
