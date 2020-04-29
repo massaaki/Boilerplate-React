@@ -666,3 +666,96 @@ export default store;
 
 
 ```
+
+## react-toastify Error/Success/warning/info messages
+
+### Installing react-toastify
+```
+yarn add react-toastify
+```
+
+### import in App.js
+```
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { ToastContainer } from 'react-toastify'; //added
+import './config/ReactotronConfig';
+
+import GlobalStyle from './styles/global';
+import Header from './components/Header';
+import Routes from './routes';
+
+import store from './store';
+
+function App() {
+  return (
+    <Provider store={store}>
+    <BrowserRouter>
+      <ToastContainer autoClose={3000}/> //added
+      <GlobalStyle />
+      <Header />
+      <Routes />
+    </BrowserRouter>
+    </Provider>
+  );
+}
+
+export default App;
+
+```
+
+
+## History - Control rotes (history dom que é usado para as rotas no react)
+Controla a parte da history api que sao as rotas que o react dom utiliza
+
+### Installation
+```
+yarn add history
+```
+
+### create configuration file src/services/history.js
+
+```
+# history.js
+import { createBrowserHistory } from 'history';
+
+const history = createBrowserHistory();
+
+export default history;
+
+```
+
+### then configure in App.js
+Com essa alteração o ReactRouterDom fica ouvindo as informações que vao acontecer no service history
+e toda vez que acontece uma alteração no HistoryApi através do servico que criamos
+o ReactRouterRom ouve essas alterações faz a navegação de telas automaticamente
+```
+# App.js
+import { Router } from 'react-router-dom'; //changed here
+...
+
+
+function App() {
+  return (
+    ...
+    <Router history={history}> //changed here
+    ...
+    </Router>
+    ...
+  )
+}
+```
+
+
+### open module/saga.js
+```
+# saga.js
+
+# import history
+import history from '../../../services/history';
+
+# redirect using
+history.push('/some-route-here');
+
+```
