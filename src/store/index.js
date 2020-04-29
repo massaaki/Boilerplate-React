@@ -7,4 +7,4 @@ const enhancer = process.env.NODE_ENV === 'development'
   const store = createStore(rootReducer, enhancer);
 
 
-export default store
+export default store;
