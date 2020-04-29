@@ -21,6 +21,7 @@ overwrite config to Airbnb style guide
 - redux (https://redux.js.org/)
 - reactotron
 - immer (https://immerjs.github.io/immer/docs/)
+- redux-saga
 ```
 
 # Start project
