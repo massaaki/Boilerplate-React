@@ -41,6 +41,7 @@ yarn start
 # State logs on development mode
 ```
 Just Install `reactotron`
+https://github.com/infinitered/reactotron
 ```
 
 
