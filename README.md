@@ -283,9 +283,79 @@ class className extends Component {
 }
 
 export default connect()(className);
+```
+#### 3. create a handle function (is exampla is using an button)
+```
+{ itens.map((item) => (
+  ...
+  <button type="button" onClick={ () => this.handleAdd(item) }>
+    Button action
+  </button>
+  ...
+))}
+```
 
+```
+handleAdd => item => {
+  # this.props.dispatch({})
+  const { dispatch } = this.props;
+
+  dispatch({
+    type: 'ADD_ITEM',
+    item
+  });
+}
+```
+
+### 4. modfy reducer.js
+```
+# action has the type sended by component, itens vars etc.
+
+export default function cart(state =[], action) {
+  switch(action.type) {
+    case 'ADD_ITEM':
+      return [...state, action.item];
+    default:
+      return state;
+  }
+}
 ```
 
 
+### 5. retrieve reducer informations
+#### import connect from react-redux to component
+```
+import { connect } from 'react-redux';
+```
+#### remove export default declare with connect with state information
+```
+# from:
+export default class ClassName extends Component {
+  ...
+}
 
+# to:
+class className extends Component {
+  ...
+}
 
+export default connect(state=> ({
+  itens: state.itens,
+}))(className);
+```
+### 6. declare state parameter
+```
+import ...
+import ...
+
+...
+
+function className({item}) {
+  console.log(item);
+  ...
+  return (
+    ...
+  );
+}
+
+```
