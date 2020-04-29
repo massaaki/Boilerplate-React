@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 
 function HookSample() {
   /**
@@ -15,17 +15,23 @@ function HookSample() {
 
 
   /**
-   * Methods
+   * Methods-Callback
+   *
+   * similar function handleAdd(){ ... }
+   * but usign callback, now handleAdd just going to be created if this functions
+   * is called
+   *
+   * best practices:  use when you you need to manipulate states
    */
-  function handleAdd() {
+  const handleAdd = useCallback(() => {
     setTech([
       ...techs,
       newTech
     ])
 
     setNewTech('');
-  }
-  //End - Methods
+  },[techs, newTech]);
+  //End - Methods-Callback
 
 
 
