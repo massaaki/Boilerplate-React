@@ -52,7 +52,7 @@ https://github.com/infinitered/reactotron
 ```
 yarn create react-app <project-name>
 ```
-### Created .editorconfig
+### Create .editorconfig
 ```editor
 root = true
 
