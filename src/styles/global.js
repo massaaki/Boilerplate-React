@@ -9,19 +9,28 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+  *:focus {
+    outline: 0;
+  }
+
   body {
-    background: #fefefe;
     -webkit-font-smoothing: antialiased;
   }
 
-  body, input, button {
-    font: 14px Roboto, sans-serif;
+  html, body, #root {
+    height: 100%;
   }
 
-  #root {
-    max-width: 1020px;
-    margin: 0 auto;
-    padding: 0 20px 50px;
+  body, input, button {
+    font: 14px 'Roboto', sans-serif;
+  }
+
+  a {
+   text-decoration: none;
+  }
+
+  ul {
+    list-style: none;
   }
 
   button {

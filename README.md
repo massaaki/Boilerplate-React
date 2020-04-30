@@ -799,3 +799,115 @@ rules : {
 
 ```
 
+# Private Routes (OPTIONAL)
+## Create files
+### 1. create src/routes/Router.js
+```
+# Route.js
+
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Route, Redirect } from 'react-router-dom';
+
+export default function RouterWrapper({
+  component: Component,
+  isPrivate,
+  ...rest
+}) {
+
+  const signed = false;
+  /**
+   * Validations
+   */
+  if (!signed && isPrivate) {
+    return <Redirect to="/" />;
+  }
+
+  if(signed && !isPrivate) {
+    return <Redirect to="/dashboard" />;
+  }
+  //End - Validation
+
+  return(
+    <Route
+      { ...rest }
+      component={Component}
+    />
+  );
+}
+
+RouterWrapper.propTypes = {
+  isPrivate: PropTypes.bool,
+  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
+};
+
+RouterWrapper.defaultProps = {
+  isPrivate: false,
+}
+
+```
+
+# Layouts
+## Create pages/_layouts/layoutName/index.js
+## Create pages/_layouts/layoutName2/index.js
+
+```
+# auth/index.js
+
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import { Wrapper } from './styles';
+
+export default function AuthLayout({ children }) {
+  return (
+    return <Wrapper>{children}</Wrapper>
+  )
+}
+
+AuthLayout.propTypes = {
+  children: PropTypes.element.isRequired,
+};
+
+```
+## Create pages/_layouts/styles.js
+```
+# styles.js
+import styled from 'styled-components';
+
+export const Wrapper = styled.div`
+  height: 100%;
+  background: linear-gradient(-90deg, #9159c1, #ab59c1);
+`;
+```
+
+
+## import layouts in Route.js
+```
+# Route.js
+
+...
+
+import layoutName from '../pages/_layouts/layoutName'; //added
+
+...
+
+
+...
+
+const Layout = signed ? layoutName : layoutName2; //added
+
+//Change return with Layout
+return(
+  <Route
+    { ...rest }
+    render={props => (
+      <Layout>
+        <Component {...props} />
+      </Layout>
+    )}
+  />
+);
+
+
+```
