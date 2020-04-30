@@ -799,7 +799,7 @@ rules : {
 
 ```
 
-# Private Routes (OPTIONAL)
+# Private Routes
 ## Create files
 ### 1. create src/routes/Router.js
 ```
