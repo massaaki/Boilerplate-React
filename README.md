@@ -911,3 +911,40 @@ return(
 
 
 ```
+
+## Babel configuration '˜' to go to root path ( or other specific page)
+### Instalation
+```
+yarn add customize-cra react-app-rewired -D
+yarn add babel-plugin-root-import -D
+```
+### Create file config-overrides.js (in project root directory)
+```
+# config-overrides.js
+
+const { addBabelPlugin, override } = require('customize-cra');
+module.exports = override(
+  addBabelPlugin([
+      'babel-plugin-root-import',
+      {
+        rootPathSuffix: 'src',
+      }
+  ])
+);
+```
+
+## Adjust package.json scripts
+```
+# from
+react-scripts
+# to
+react-app-rewired
+
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject"
+  },
+
+```

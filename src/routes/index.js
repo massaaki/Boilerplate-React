@@ -6,8 +6,8 @@ import Route from './Route';
  * <> Define your pages here
  * You can use snippet rfc to create a functional componentgit
  */
-import Home from '../pages/Home';
-import HookSample from '../pages/HoookSample';
+import Home from '~/pages/Home';
+import HookSample from '~/pages/HoookSample';
 //* </> End Pages
 
 export default function Routes() {
