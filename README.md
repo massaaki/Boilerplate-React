@@ -915,8 +915,7 @@ return(
 ## Babel configuration '˜' to go to root path ( or other specific page)
 ### Instalation
 ```
-yarn add customize-cra react-app-rewired -D
-yarn add babel-plugin-root-import -D
+yarn add customize-cra react-app-rewired babel-plugin-root-import -D
 ```
 ### Create file config-overrides.js (in project root directory)
 ```
@@ -946,5 +945,44 @@ react-app-rewired
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
+
+```
+
+## configure eslint
+installation
+```
+yarn add eslint-import-resolver-babel-plugin-root-import -D
+```
+
+### adding settings to .eslintrc.js
+```
+# .eslintrc.js
+
+  ...
+  rules: {
+    ...
+  },
+  settings: { //added
+    "import/resolver": {
+      "babel-plugin-root-import": {
+        rootPathSuffix: 'src'
+      }
+    }
+  }
+```
+
+## configure goto path when control or cmd is presed
+###  create jsconfig.json (project root path)
+```
+# jsconfig,json
+
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      " ~/*": ["*"]
+    }
+  }
+}
 
 ```
