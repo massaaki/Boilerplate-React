@@ -4,11 +4,19 @@ import { Route, Redirect } from 'react-router-dom';
 
 import DefaultLayout from '../pages/_layouts/default';
 
+// import { store } from '~/store';
+
 export default function RouterWrapper({
   component: Component,
   isPrivate,
   ...rest
 }) {
+
+  /**
+   * Getting Store informations
+   * example to get user stored informations
+   * const { signed } = store.getState().auth;
+   */
 
  /**
   *
