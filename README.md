@@ -986,3 +986,115 @@ yarn add eslint-import-resolver-babel-plugin-root-import -D
 }
 
 ```
+
+
+
+## Field valitation
+
+### instalation
+```
+yarn add yup
+```
+
+### Usage
+#### import Yup component
+```
+import * as Yup from 'yup';
+```
+
+#### create schema to validate data
+```
+const schema =  Yup.object().shape({
+  email: Yup.string().email('Insira um e-mail válido').required('O e-mail é obrigatório'),
+  pasword: Yup.string.required('A senha é obrigatória')
+});
+```
+
+
+
+## Persistir dados do usuario com user-persist
+This configuration manipule and set local storages of current environment (asyncStorage in case React Native),
+
+
+### Install redux-persist
+```
+yarn add redux-persist
+```
+
+### create file src/store/persistReducers.js
+```
+# persistReducers.js
+
+import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
+
+export default reducers => {
+  const persistedReducer = persistReducer({
+    key: 'root', //key to organize your reducers, you can put your application name here
+    storage, // set current application storage
+    whitelist: ['auth', 'user'], //reducers to store
+  }, reducers);
+
+  return persistedReducer;
+}
+```
+
+### configure src/store/index.js
+```
+import { persistStore } from 'redux-persist'; //added
+...
+
+import persistReducers from './persistReducers'; //added
+
+const sagaMonitor = ...
+
+...
+
+const store = createStore(persistReducers(rootReducer), middlewares); //modified
+const persistor = persistStore(store); //added
+
+
+...
+
+export { store, persistor }; //modified
+```
+
+### Ajust import 'store' from App.js, Route.js
+```
+# from:
+import store from './store';
+
+to:
+import { store } from './store';
+```
+
+
+### configure react-persist integration in App.js
+```
+App.js
+
+import React from 'react';
+import { PersistGate } from 'redux-persist/integration/react'; //added
+ ...
+import { store, persistor } from './store'; //modify
+
+function App() {
+  return (
+    <Provider store={store}> //added
+      {/*  PersistGate will render after get store informations */}
+      <PersistGate persistor={persistor}>
+        <Router history={history}>
+          <GlobalStyle />
+          <Routes />
+        </Router>
+    </PersistGate> //added
+    </Provider>
+  );
+}
+
+export default App;
+
+
+
+```
+
