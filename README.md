@@ -19,6 +19,7 @@ overwrite config to Airbnb style guide
 - Default font: Roboto (from google fonts)
 - Icons (Material Design)
 - redux (https://redux.js.org/)
+- persist-redux
 - reactotron
 - immer (https://immerjs.github.io/immer/docs/)
 - redux-saga
