@@ -676,7 +676,7 @@ export default store;
 
 ## react-toastify Error/Success/warning/info messages
 
-### Installing react-toastify
+### Installing react-toastify (OPTIONAL)
 ```
 yarn add react-toastify
 ```
@@ -711,6 +711,22 @@ function App() {
 export default App;
 
 ```
+
+### add styles
+```
+import 'react-toastify/dist/ReactToastify.css';
+```
+
+### usage
+```
+import { toast } from 'react-toastify';
+
+toast.error('error alert');
+toast.success('success alert');
+toast.warn('warning alert');
+```
+
+
 
 
 ## History - Control rotes (history dom que é usado para as rotas no react)
